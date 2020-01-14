@@ -60,11 +60,17 @@ app.use(express.static('public'))
   app.post('/test',async function(req, res){
     try {
       // console.log('HITTING IT')
-      console.log(_base64ToArrayBuffer(req.body.request))
+      // console.log(_base64ToArrayBuffer(req.body.request))
       // console.log(req.body.request)
-      analize(_base64ToArrayBuffer(req.body.request))
+      if (analize(_base64ToArrayBuffer(req.body.request))){
 
-      res.send(req.body)
+        res.send(result)
+      } else {
+        res.send('nope')
+      }
+      
+    
+      // res.send('HELLO WORLD')
     } catch (error) {
       
       console.log(error)
